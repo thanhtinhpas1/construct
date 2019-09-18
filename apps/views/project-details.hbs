@@ -1,0 +1,50 @@
+<div class="container project-view">
+
+    <div class="row">
+        <div class="col-md-8 project-images">
+            {{#each imgs}}
+            <img src="{{url}}" alt="construct-img" class="img-responsive" />
+            {{/each}}
+        </div>
+        <div class="col-md-4">
+            <div class="project-info">
+                <h2>{{construct.name}}</h2>
+
+                <div class="details">
+                    <div class="info-text">
+                        <span class="title">Năm </span>
+                        <span class="val">{{construct.year}}</span>
+                    </div>
+
+                    <div class="info-text">
+                        <span class="title">Địa chỉ </span>
+                        <span class="val">{{construct.address}}</span>
+                    </div>
+
+                    <div class="info-text">
+                        <span class="title">Giá trị </span>
+                        <span class="val">{{construct.value}}</span>
+                    </div>
+
+                    <div class="info-text">
+                        <span class="title">Khách hàng </span>
+                        <span class="val">{{construct.client}}</span>
+                    </div>
+
+                </div>
+
+                <p>Với thế mạnh trong lĩnh vực thi công xây dựng, Công ty Thiết kế Xây dựng Đức Thiên Construction đã và
+                    đang tạo được niềm tin đối với khách hàng bằng việc xây dựng những công trình chất lượng, tiện ích
+                    khi đưa vào sử dụng.</p>
+                <br>
+                <p>
+                    Chúng tôi là một tập thể gồm các kỹ sư, kiến trúc sư dày dặn kinh nghiệm và các công nhân lành nghề
+                    luôn đặt hết tâm huyết vào trong từng công trình.
+                </p>
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Tin tức</h1>
+                <ul class="crumb">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li class="sep">/</li>
+                    <li>Tin tức</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+
+<!-- content begin -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="blog-list">
+                    {{#each posts}}
+                    <li>
+                        <div class="post-content">
+                            <div class="post-image">
+                                <img src="{{thumbnail}}" alt="">
+                            </div>
+                            <div class="date-box">
+                                <div class="day">{{moment created_at format="DD"}}</div>
+                                <div class="month">{{month}}</div>
+                            </div>
+
+                            <div class="post-text">
+                                <h3><a href="/blogs/{{id}}/detail">{{title}}</a></h3>
+                                <p>{{describe}}</p>
+                            </div>
+
+                            <a href="/blogs/{{id}}/detail" class="btn-more">Chi tiết</a>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+
+                <div class="text-center">
+                    <ul class="pagination">
+                        <li {{#if previous}} disabled {{/if}}><a href="?page={{pagePrevious}}" tabindex="-1">Prev</a>
+                        </li>
+                        {{#each pagination}}
+                        {{#if active}}
+                        <li class="active"><a href="javascript:;">{{value}}</a></li>
+                        {{else}}
+                        <li {{#if active}} active {{/if}}><a href="?page={{value}}">{{value}}</a></li>
+                        {{/if}}
+                        {{/each}}
+                        <li {{#if next}} disabled {{/if}}><a href="?page={{pageNext}}" tabindex="-1">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="sidebar" class="col-md-4">
+                <div class="widget widget-post">
+                    <h4>Bài viết gần đây</h4>
+                    <div class="small-border"></div>
+                    <ul class="recent">
+                        {{#each recent}}
+                        <li class="mt-5">
+                            <a href="/blogs/{{id}}/detail">
+                                <h3>{{title}}</h3>
+                                <img src="{{thumbnail}}" alt="">
+                            </a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

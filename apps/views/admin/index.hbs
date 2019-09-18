@@ -1,0 +1,87 @@
+<!-- partial -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title mb-5">Bảng dữ liệu bài viết
+            <a class="action text-white" href="/admin/posts/add">
+                <button type="button" class=" float-right btn btn-success">Tạo
+                    mới</button>
+            </a>
+        </h4>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th width="5%">ID</th>
+                                <th width="45%">Tiêu đề</th>
+                                <th width="15%">Ngày tạo</th>
+                                <th width="35%">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each posts}}
+                            <tr>
+                                <td>{{id}}</td>
+                                <td>{{title}}</td>
+                                <td>{{moment created_at format="MM/DD h:mm"}}</td>
+                                <form id="frmDelelte{{id}}" action="/admin/post/{{id}}/delete" method="POST" style="display: none;"></form>
+                                <td class="admin-action">
+                                    <a href="/admin/post/{{id}}/update" class="mr-2">
+                                        <div class="badge badge-primary badge-pill">Update</div>
+                                    </a>
+                                    <a href="#" onclick="showSwal(frmDelelte{{id}})">
+                                        <div class="badge badge-danger badge-pill">Delete</div>
+                                    </a>
+                                    <a href="/admin/post/{{id}}/upload" class="mr-2">
+                                        <div class="badge badge-primary badge-pill">Upload thumbnail</div>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showSwal(nameFrm) {
+        var frm = $(nameFrm);
+        'use strict';
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3f51b5',
+            cancelButtonColor: '#ff4081',
+            confirmButtonText: 'Great ',
+            buttons: {
+                cancel: {
+                    text: "Cancel",
+                    value: null,
+                    visible: true,
+                    className: "btn btn-danger",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "OK",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-primary",
+                    closeModal: true
+                }
+            }
+        }).then((values) => {
+            if (values) {
+                frm.submit();
+            }
+            else {
+
+            }
+        })
+    }
+</script>

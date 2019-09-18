@@ -1,0 +1,61 @@
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Tin tức</h1>
+                <ul class="crumb">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li class="sep">/</li>
+                    <li>Tin tức</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+
+<!-- content begin -->
+<div id="content" class="pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-read">
+                    <div class="post-content">
+                        <div class="post-image">
+                            <img src="{{post.thumbnail}}" alt="post-image" />
+                        </div>
+
+                        <div class="date-box">
+                            <div class="day">{{moment post.created_at format="DD"}}</div>
+                            <div class="month">{{post.month}}</div>
+                        </div>
+
+                        <div class="post-text">
+                            <h3>{{post.title}}</h3>
+                            {{{post.content}}}
+                        </div>
+                    </div>
+                    <div class="spacer-single"></div>
+                </div>
+            </div>
+
+            <div id="sidebar" class="col-md-4">
+                <div class="widget widget-post">
+                    <h4>Bài viết gần đây</h4>
+                    <div class="small-border"></div>
+                    <ul class="recent">
+                        {{#each recent}}
+                        <li class="mt-5">
+                            <a href="/blogs/{{id}}/detail">
+                                <h3>{{title}}</h3>
+                                <img src="{{thumbnail}}" alt="">
+                            </a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

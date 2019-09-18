@@ -1,0 +1,80 @@
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Liên hệ</h1>
+                <ul class="crumb">
+                    <li><a href="/">Trang chủ</a></li>
+                    <li class="sep">/</li>
+                    <li>Liên hệ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+
+<!-- content begin -->
+<div id="contact" class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Gửi tin nhắn cho chúng tôi</h3>
+                <form name="contactForm" id='contact_form' method="post" action='/admin/clients'>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div id='name_error' class='error'>Please enter your name.</div>
+                            <div>
+                                <input type='text' name='name' id='name' class="form-control"
+                                    placeholder="Nhập tên của bạn">
+                            </div>
+
+                            <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
+                            <div>
+                                <input type='text' name='email' id='email' class="form-control"
+                                    placeholder="Nhập email của bạn">
+                            </div>
+
+                            <div id='phone_error' class='error'>Please enter your phone number.</div>
+                            <div>
+                                <input type='text' name='phone' id='phone' class="form-control"
+                                    placeholder="Nhập số điện thoại của bạn">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div id='message_error' class='error'>Please enter your message.</div>
+                            <div>
+                                <textarea name='message' id='message' class="form-control"
+                                    placeholder="Nhập tin nhắn của bạn"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p id='submit'>
+                                <input type='submit' id='send_message' value='Gửi đi' class="btn text-white btn-line">
+                            </p>
+                            <div id='mail_success' class='success'>Tin nhắn của bạn đã gửi thành công</div>
+                            <div id='mail_fail' class='error'>Xin lỗi, đã xảy ra sự cố, vui lòng thử lại sau.</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="sidebar" class="col-md-4">
+
+                <div class="widget widget_text">
+                    <h3>Thông tin liên hệ</h3>
+                    <address>
+                        <span>135B Điện Biên Phủ, Phường 15, Quận Bình Thạnh</span>
+                        <span><strong>Số điện thoại:</strong>097 177 88 39</span>
+                        <span><strong>Email:</strong>Ducthien@dtcons.vn</></span>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1850998009713!2d106.70103131480099!3d10.797130992307455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528b6fdf94505%3A0x2eca65f3c95267e4!2zMTM1QiDEkGnhu4duIEJpw6puIFBo4bunLCBQaMaw4budbmcgMTUsIELDrG5oIFRo4bqhbmgsIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1568174278188!5m2!1svi!2s"
+        width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+</div>

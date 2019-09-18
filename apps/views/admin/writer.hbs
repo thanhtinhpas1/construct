@@ -1,0 +1,53 @@
+<div class="row grid-margin">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-5">Bài viết - Đức Thiện <button id="post-submit"
+                        class="float-right text-white btn btn-success btn-rounded btn-fw">Lưu
+                        bài
+                        viết</button></h4>
+                <form id="post-form" onsubmit="return false;">
+                    <label for="title">Tiêu đề</label>
+                    <input type="text" id="title" name="title" class="form-control mb-3"
+                        placeholder="Nhập tiêu đề bài viết" required>
+                    <label for="title">Mô tả</label>
+                    <input type="text" id="describe" name="describe" class="form-control mb-3"
+                        placeholder="Nhập mô tả bài viết" required>
+                    <label for="summernoteExample">Nội dung bài viết</label>
+                    <div class="form-control" name="content" id="summernoteExample">
+                        {{!-- Content here --}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#post-submit').click(function () {
+        var content = $('#summernoteExample').summernote('code');
+        var title = $('#post-form').find('input[name="title"]').val();
+        var describe = $('#post-form').find('input[name="describe"]').val();
+        var form = {};
+        form['content'] = content;
+        form['title'] = title;
+        form['describe'] = describe;
+        $.ajax({
+            url: '/admin/posts/add',
+            method: 'POST',
+            dataType: 'json',
+            data: JSON.stringify(form),
+            contentType: 'application/json',
+            cache: true,
+            timeout: 20000,
+            success: (value) => {
+            },
+            error: (error) => {
+            },
+            complete: () => {
+                window.location.replace('/admin');
+            }
+        })
+    })
+
+</script>

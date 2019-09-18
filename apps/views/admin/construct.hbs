@@ -1,0 +1,129 @@
+<!-- partial -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title mb-5">Bảng dữ liệu thi công công trình
+            <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Công trình mới</h5>
+                            {{!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button> --}}
+                        </div>
+                        <form action="/admin/construct/add" method="POST" class="form-group">
+                            <div class="modal-body">
+                                <label for="recipient-name" class="col-form-label">Tên</label>
+                                <input name="name" type="text" class="form-control" id="recipient-name"
+                                    placeholder="Tên công trình" />
+                                <label for="message-text" class="col-form-label">Địa chỉ</label>
+                                <input name="address" class="form-control" id="message-text"
+                                    placeholder="Địa chỉ công trình"></input>
+
+                                <label for="author" class="col-form-label">Khách hàng</label>
+                                <input name="client" class="form-control" id="author"
+                                    placeholder="Tên khách hàng"></input>
+                                <label for="message-text" class="col-form-label">Giá trị</label>
+                                <input name="value" class="form-control" id="message-text"
+                                    placeholder="Giá trị"></input>
+                                <label for="message-text" class="col-form-label">Năm</label>
+                                <input name="year" class="form-control" id="message-text" placeholder="Năm"></input>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" type="button" class="btn btn-success">Tạo mới</button>
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <button id="btnNewConstruct" type="button" class="btn btn-info" data-toggle="modal"
+                data-target="#exampleModal-4" data-whatever="@mdo">Tạo mới</button>
+        </h4>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th width="5%">ID</th>
+                                <th width="15%">Tên</th>
+                                <th width="20%">Địa chỉ</th>
+                                <th width="15%">Khách hàng</th>
+                                <th width="10%">Giá trị</th>
+                                <th width="5%">Năm</th>
+                                <th width="30%">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each constructs}}
+                            <tr>
+                                <td>{{id}}</td>
+                                <td>{{name}}</td>
+                                <td>{{address}}</td>
+                                <td>{{client}}</td>
+                                <td>{{value}}</td>
+                                <td>{{year}}</td>
+                                <form id="frmDelelte{{id}}" action="/admin/construct/{{id}}/delete" method="POST"
+                                    style="display: none;"></form>
+                                <td class="admin-action">
+                                    <a href="/admin/construct/{{id}}/update" class="mr-2">
+                                        <div class="badge badge-primary badge-pill">Update</div>
+                                    </a>
+                                    <a href="#" onclick="showSwal(frmDelelte{{id}})">
+                                        <div class="badge badge-danger badge-pill">Delete</div>
+                                    </a>
+                                    <a href="/admin/construct/{{id}}/upload" class="mr-2">
+                                        <div class="badge badge-primary badge-pill">Upload image</div>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showSwal(nameFrm) {
+        var frm = $(nameFrm);
+        'use strict';
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3f51b5',
+            cancelButtonColor: '#ff4081',
+            confirmButtonText: 'Great ',
+            buttons: {
+                cancel: {
+                    text: "Cancel",
+                    value: null,
+                    visible: true,
+                    className: "btn btn-danger",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "OK",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-primary",
+                    closeModal: true
+                }
+            }
+        }).then((values) => {
+            if (values) {
+                frm.submit();
+            }
+            else {
+
+            }
+        })
+    }
+</script>

@@ -1,0 +1,116 @@
+<!-- partial -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title mb-5">Bảng dữ liệu người dùng
+            <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Người dùng mới</h5>
+                            {{!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button> --}}
+                        </div>
+                        <form action="/admin/users/add" method="POST" class="form-group">
+                            <div class="modal-body">
+                                <label for="message-text" class="col-form-label">Tên đăng nhập</label>
+                                <input name="username" class="form-control" id="message-text"
+                                    placeholder="Username"></input>
+
+                                <label for="author" class="col-form-label">Tên người dùng</label>
+                                <input name="name" class="form-control" id="author"
+                                    placeholder="Tên người dùng"></input>
+                                <label for="message-text" class="col-form-label">Mật khẩu</label>
+                                <input  type="password" name="password" class="form-control" id="message-text"
+                                    placeholder="Mật khẩu"></input>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" type="button" class="btn btn-success">Tạo mới</button>
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Đóng</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <button id="btnNewConstruct" type="button" class="btn btn-info" data-toggle="modal"
+                data-target="#exampleModal-4" data-whatever="@mdo">Tạo mới</button>
+        </h4>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="order-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th width="5%">ID</th>
+                                <th width="25%">Tên tài khoản</th>
+                                <th width="25%">Tên người dùng</th>
+                                <th width="15%">Ngày tạo</th>
+                                <th width="35%">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each users}}
+                            <tr>
+                                <td>{{id}}</td>
+                                <td>{{username}}</td>
+                                <td>{{name}}</td>
+                                <td>{{moment created_at format="MM/DD h:mm"}}</td>
+                                <form id="frmDelelte{{id}}" action="/admin/users/{{id}}/delete" method="POST"
+                                    style="display: none;"></form>
+                                <td class="admin-action">
+                                    <a href="/admin/users/{{id}}/update" class="mr-2">
+                                        <div class="badge badge-primary badge-pill">Update</div>
+                                    </a>
+                                    <a href="#" onclick="showSwal(frmDelelte{{id}})">
+                                        <div class="badge badge-danger badge-pill">Delete</div>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showSwal(nameFrm) {
+        var frm = $(nameFrm);
+        'use strict';
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3f51b5',
+            cancelButtonColor: '#ff4081',
+            confirmButtonText: 'Great ',
+            buttons: {
+                cancel: {
+                    text: "Cancel",
+                    value: null,
+                    visible: true,
+                    className: "btn btn-danger",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "OK",
+                    value: true,
+                    visible: true,
+                    className: "btn btn-primary",
+                    closeModal: true
+                }
+            }
+        }).then((values) => {
+            if (values) {
+                frm.submit();
+            }
+            else {
+
+            }
+        })
+    }
+</script>
